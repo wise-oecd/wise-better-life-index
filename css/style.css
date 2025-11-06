@@ -1,0 +1,453 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+}
+.viz {
+  display: flex;
+  width: 100%;
+  /*gap: 10px; /* Adds space between the two divs */
+}
+
+.box {
+  /*padding: 10px;*/
+  text-align: left;
+}
+.box1 {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  flex: 1; /* Takes 1 part of available space */
+  /*width: 50%;*/
+}
+.box2 {
+  background-color: #f9f9f9;
+  flex: 5; /* Takes 5 parts of available space */
+  /*width: 50%;*/
+  min-width: 450px;
+}
+#flower-container {
+  position: relative;
+  /*background-color: #e3e9f3;
+  background-image: -webkit-linear-gradient(#e3e9f3, #e4e2d4);
+  background-image: linear-gradient(#e3e9f3, #e4e2d4);*/
+  background-color: white;
+  border-bottom: 0px solid #b3bccd;
+}
+
+.countryName {
+  font-family: "Noto Sans Display", sans-serif;
+  fill: rgba(47, 47, 47, 0.8);
+  /* offset-x | offset-y | blur-radius | color */
+  text-shadow: 2px 2px 2px #ffffff;
+  font-weight: 300;
+  line-height: 1.58;
+  letter-spacing: -0.003em;
+  font-size: 11px;
+}
+
+.petal {
+  /*mix-blend-mode: color;*/
+  background: linear-gradient(transparent, black);
+}
+
+/***********/
+/**Sliders**/
+/***********/
+
+.container {
+  /*background-color: #e3e9f3;
+  background-image: -webkit-linear-gradient(#e3e9f3, #e4e2d4);
+  background-image: linear-gradient(#e3e9f3, #e4e2d4);*/
+  background-color: white;
+  border-bottom: 1px solid #b3bccd;
+  max-width: 220px;
+  margin: 0 0;
+  font-family: "Noto Sans Display", sans-serif;
+}
+h3 {
+  text-align: left;
+  display: inline;
+  font-family: "Noto Sans Display";
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 18px;
+}
+#p {
+  text-align: left;
+  font-family: "Noto Sans Display";
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 13px;
+}
+#subtitle {
+  display: inline;
+  text-align: left;
+  font-family: "Noto Sans Display";
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 13px;
+}
+
+#infoVideo {
+  display: inline;
+  vertical-align: middle;
+}
+.dimension {
+  margin: 3px 0px 0px 0px;
+  /*border-bottom: 1px solid #b3bccd;*/
+}
+
+.slider {
+  width: 100%;
+  margin: 0px 0px;
+}
+
+.label-container {
+  display: flex;
+  /*justify-content: space-between;*/
+  align-items: center;
+  width: 100%;
+  font-family: "Noto Sans Display";
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 13px;
+  color: #586179;
+  text-decoration: underline;
+}
+
+.dimension-icon {
+  width: 20px; /* Your desired icon width */
+  height: 20px; /* Your desired icon height */
+  margin-right: 8px; /* Space between icon and the label text */
+  flex-shrink: 0; /* Prevents the icon from shrinking if space is limited */
+}
+
+.label-container label {
+  /* No specific styles needed for alignment here, flexbox handles it. */
+  /* You might want to add margin-right if you want more space before the value, */
+  /* but margin-left: auto on the value span is usually enough. */
+  /* For example: margin-right: 10px; */
+  white-space: nowrap; /* Prevents label text from wrapping if it's long and space is tight before value */
+}
+
+.label-container span[id$="Value"] {
+  /* Selects all spans whose id ends with 'Value' (e.g., housingValue, incomeValue) */
+  margin-left: auto; /* This is the key: Pushes the value to the far right */
+  /*padding-left: 10px; /* Optional: Adds a little space before the value so it's not flush against other content if the label grows */
+  font-weight: bold; /* Optional: Makes the value stand out a bit */
+}
+.assignedWeight {
+  /* Font Styling */
+  font-weight: bold; /* This provides the "weight font" (bold) */
+  font-size: 10px; /* Adjust font size so "10" fits comfortably */
+
+  /* Circle Appearance */
+  background-color: #001f3f; /* A nice Dark Navy Blue. Adjust hex code if you have a specific shade. */
+  color: #ffffff; /* White text for good contrast on the navy background */
+  border-radius: 50%; /* This makes the rectangular span into a circle */
+
+  /* Sizing for the Circle */
+  /* Use fixed width and height to ensure a perfect circle, especially for two-digit numbers like "10" */
+  width: 15px; /* Adjust size as needed */
+  height: 15px; /* Must be equal to width for a circle with border-radius: 50% */
+
+  /* Centering text (the number) within the circle */
+  display: flex; /* Enables flexbox properties for easy centering */
+  align-items: center; /* Vertically centers the number */
+  justify-content: center; /* Horizontally centers the number */
+}
+
+/*#results {
+  margin-top: 40px;
+}
+#results ul {
+  list-style: none;
+  padding: 0;
+}*/
+
+/***********/
+/**Axis*****/
+/***********/
+
+.y-axis path.domain {
+  /* The main vertical line of the axis */
+  stroke: #333; /* Dark grey for the axis line */
+  stroke-width: 0px;
+}
+
+.y-axis .tick line {
+  /* The small tick marks */
+  stroke: #ccc; /* Lighter grey for tick lines */
+}
+
+.y-axis .tick text {
+  /* The numbers/labels on the ticks */
+  font-family: "Noto Sans Display", sans-serif;
+  font-size: 9px; /* Or your preferred size */
+  fill: #444; /* Slightly darker grey for text for readability */
+}
+
+.tooltip-y-axis {
+  /* The small tick marks */
+
+  stroke-width: 0px;
+}
+
+.axis path.domain {
+  /* The main vertical line of the axis */
+  stroke: #333; /* Dark grey for the axis line */
+  stroke-width: 0px;
+}
+
+.axis .tick line {
+  /* The small tick marks */
+  stroke: #ccc; /* Lighter grey for tick lines */
+}
+
+.axis .tick text {
+  /* The numbers/labels on the ticks */
+  font-family: "Noto Sans Display", sans-serif;
+  font-size: 9px; /* Or your preferred size */
+  fill: #444; /* Slightly darker grey for text for readability */
+}
+
+/***********/
+/**SORT*****/
+/***********/
+
+#sorting-controls {
+  text-align: left;
+  font-family: "Noto Sans Display", sans-serif;
+  font-size: 11px;
+  color: #586179;
+}
+
+/*#sort-select {
+  margin: 1px 0 1px 0;
+  padding: 0.5rem;
+  width: 100%;
+  font-family: "Noto Sans Display", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 11px;
+  fill: #586179;
+  text-align: left;
+  letter-spacing: normal;
+  vertical-align: baseline;
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  min-height: 48px;
+}*/
+#sort-select {
+  /* Resetting default browser appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* Font and Text Color (matching OECD) */
+  font-family: "Noto Sans Display", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 11px;
+  fill: #586179;
+
+  /* Background and Border (matching OECD) */
+
+  background-color: #e8edf2;
+  border: 1px solid #e8edf2;
+  border-radius: 0; /* OECD dropdown has sharp corners */
+
+  /* Spacing - Padding (matching OECD: 0.6rem on top/bottom, 0.8rem left, 2.5rem right for arrow) */
+  /* Assuming 1rem = 10px for this conversion, adjust if your base is different */
+  /* More commonly, 1rem = 16px. If so, padding would be approx. 9.6px 40px 9.6px 12.8px */
+  /* Let's use pixel values that look similar for clarity: */
+  padding: 7px 35px 7px 10px; /* Approximate padding: top/bottom, right (for arrow), left */
+
+  /* Custom Dropdown Arrow (SVG encoded as data URI) */
+  /* This SVG creates a simple black chevron pointing down, similar to OECD's arrow */
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%233c3c3c' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Position arrow on the right, adjust 10px as needed */
+  background-size: 10px 6px; /* Size of the arrow icon */
+
+  /* Sizing and Cursor */
+  min-width: 200px; /* Adjust as needed, OECD's is wider */
+  height: auto; /* Or a specific height if needed, e.g., 34px matching common input heights */
+  line-height: 1.5; /* For vertical text centering within padding */
+  cursor: pointer;
+  box-sizing: border-box; /* Important for padding and border to be included in width/height */
+}
+
+/* Hover State (matching OECD's light blue background) */
+#sort-select:hover {
+  background-color: #f0f8ff; /* A light blue similar to OECD's #E6F2F8, adjust as needed */
+  border-color: #bbb; /* Slightly darker border on hover */
+}
+
+/* Focus State (for accessibility, common blue ring style) */
+#sort-select:focus {
+  outline: none; /* Remove default browser outline */
+  border-color: #007bff; /* A common blue for focus indication */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Bootstrap-like focus shadow */
+}
+
+/* Disabled state (optional, if you might disable it) */
+#sort-select:disabled {
+  background-color: #e9ecef;
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Styling for <option> elements within the select */
+/* Note: Styling <option> elements is very limited and browser-dependent */
+#sort-select option {
+  font-family: "Source Sans Pro", Arial, sans-serif;
+  font-size: 14px;
+  color: #3c3c3c;
+  background-color: #fff; /* Background of the dropdown list items */
+  padding: 5px 10px; /* May not be respected by all browsers */
+}
+
+/***********/
+/**TOOLTIP**/
+/***********/
+#tooltip {
+  background-color: rgba(255, 255, 255, 1);
+  border: 0px solid #ccc;
+  border-radius: 1px;
+  padding: 12px;
+  font-family: "Noto Sans Display", sans-serif;
+  font-size: 11px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.2s ease-in-out;
+  min-width: 220px; /* Adjust as needed */
+  z-index: 100; /* Ensure it's on top */
+}
+
+#tooltip-country-name {
+  margin-bottom: 20px;
+  border-bottom: 1px;
+  stroke: #888;
+}
+
+#tooltip-barchart-container svg {
+  display: block;
+  font-family: "Noto Sans Display", sans-serif;
+}
+
+#tooltip-barchart-container .axis path,
+#tooltip-barchart-container .axis line {
+  fill: none;
+  stroke: #888;
+  shape-rendering: crispEdges;
+}
+
+#tooltip-barchart-container .axis text {
+  font-size: 9px;
+  fill: #555;
+}
+
+/***********************************************/
+/* --- Responsive Styles for Small Screens --- */
+/***********************************************/
+@media (max-width: 500px) {
+  .viz {
+    flex-direction: column; /* Stack flex items vertically */
+    height: auto; /* Allow .viz to grow based on content height */
+    min-height: 100vh; /* Ensure it at least fills the viewport height if content is short */
+    gap: 0; /* Reset gap or set a small vertical gap e.g., 10px */
+  }
+
+  .box1,
+  .box2 {
+    flex-grow: 0; /* Don't allow boxes to grow beyond their content unless specified */
+    flex-shrink: 0; /* Don't allow boxes to shrink beyond their content unless specified */
+    flex-basis: auto; /* Let the content determine the initial size */
+    width: 100%; /* Make each box take the full viewport width */
+    max-width: 100%; /* Override any desktop max-width that might limit it */
+    /* Reset any specific flex values from desktop view if they conflict */
+  }
+
+  .box1 {
+    /* If box1 (sliders) can get very tall, you might want to limit its height
+       and make it scrollable, especially if box2 needs significant space. */
+    /* Example: */
+    /* max-height: 60vh; */
+    /* overflow-y: auto; */
+    order: 2; /* Explicitly set order if needed, though default is source order */
+  }
+
+  .box2 {
+    /* box2 contains the flower visualization.
+       Its height is largely determined by the SVG height set in your JavaScript
+       (svgHeight = window.innerHeight * 0.8;).
+       Ensure .box2 itself can accommodate this. */
+    /* You might want to give it a minimum height if the JS-driven SVG height
+       could become too small or if box1 takes up most of the space. */
+    /* Example: min-height: 300px; */
+    order: 1; /* Explicitly set order */
+    /* The #flower-container inside .box2 will contain the SVG.
+       Ensure #flower-container and its SVG are set to width: 100%; */
+  }
+
+  /* Optional: Adjust padding for smaller screens */
+  .box {
+    padding: 10px;
+  }
+
+  .container {
+    margin: 0px 1px 0px 1px;
+    padding: 0px 5% 0px 5%;
+  }
+  .slider {
+    width: 90%;
+    margin: 1px 0px;
+  }
+}
+
+/* --- CSS for Dimension Definition Tooltip --- */
+#dimension-tooltip {
+  position: absolute; /* Allows positioning relative to the page */
+  opacity: 0; /* Initially hidden */
+  padding: 12px;
+  line-height: 1.5;
+  max-width: 280px; /* Prevents the tooltip from becoming too wide */
+  text-align: left;
+  pointer-events: none; /* IMPORTANT: Prevents the tooltip from blocking mouse events */
+  background-color: rgba(255, 255, 255, 1);
+  border: 0px solid #ccc;
+  border-radius: 1px;
+  padding: 12px;
+  font-family: "Noto Sans Display", sans-serif;
+  font-size: 11px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.2s ease-in-out;
+  min-width: 220px; /* Adjust as needed */
+  z-index: 100; /* Ensure it's on top */
+}
+
+/* --- CSS for Dimension Definition Tooltip --- */
+#info-tooltip {
+  position: absolute; /* Allows positioning relative to the page */
+  opacity: 0; /* Initially hidden */
+  padding: 12px;
+  line-height: 1.5;
+  width: 75%;
+  max-width: 600px; /* Prevents the tooltip from becoming too wide */
+  text-align: left;
+  pointer-events: none; /* IMPORTANT: Prevents the tooltip from blocking mouse events */
+  background-color: rgba(255, 255, 255, 1);
+  border: 0px solid #ccc;
+  border-radius: 1px;
+  padding: 12px;
+  font-family: "Noto Sans Display", sans-serif;
+  font-size: 11px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.2s ease-in-out;
+  z-index: 100; /* Ensure it's on top */
+}

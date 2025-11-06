@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="css/style.css" rel="stylesheet" />
+    <title>OECD Better Life Index</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/petal.js"></script>
+    <script src="js/updateVis.js"></script>
+  </head>
+  <body>
+    <div class="viz">
+      <div class="container box box1">
+        <h3 data-i18n-key="main_title">Create your Better Life Index</h3>
+  <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="15"
+          height="15"
+          viewBox="0 0 256 256"
+          id="infoVideo"
+        >
+          <path
+            d="M142,176a6,6,0,0,1-6,6,14,14,0,0,1-14-14V128a2,2,0,0,0-2-2,6,6,0,0,1,0-12,14,14,0,0,1,14,14v40a2,2,0,0,0,2,2A6,6,0,0,1,142,176ZM124,94a10,10,0,1,0-10-10A10,10,0,0,0,124,94Zm106,34A102,102,0,1,1,128,26,102.12,102.12,0,0,1,230,128Zm-12,0a90,90,0,1,0-90,90A90.1,90.1,0,0,0,218,128Z"
+          ></path>
+        </svg>
+        <p><div id="subtitle" data-i18n-key="main_subtitle">
+          Adjust the sliders according to how important each dimension is to you (from 0-10):</div>      
+      
+      </p>
+        <!-- Sliders for the 11 Dimensions -->
+        <div id="sliders">
+          <div class="dimension">
+            <div class="label-container">
+              <img src="img/Housing.png" alt="Housing" class="dimension-icon" />
+              <label data-i18n-key="housing_label" for="housing">Housing</label>
+              <span id="housingValue" class="assignedWeight">5</span>
+            </div>
+            <input
+              type="range"
+              id="housing"
+              name="housing"
+              min="0"
+              max="10"
+              step="1"
+              class="slider"
+              value="5"
+            />
+          </div>
+          <div class="dimension">
+            <div class="label-container">
+              <img src="img/Income.png" alt="Income" class="dimension-icon" />
+              <label data-i18n-key="income_label" for="income"
+                >Income and wealth</label
+              >
+              <span id="incomeValue" class="assignedWeight">5</span>
+            </div>
+            <input
+              type="range"
+              id="income"
+              name="income"
+              min="0"
+              max="10"
+              step="1"
+              class="slider"
+              value="5"
+            />
+          </div>
+          <div class="dimension">
+            <div class="label-container">
+              <img src="img/Jobs.png" alt="Jobs" class="dimension-icon" />
+              <label data-i18n-key="jobs_label" for="jobs"
+                >Work and job quality</label
+              >
+              <span id="jobsValue" class="assignedWeight">5</span>
+            </div>
+            <input
+              type="range"
+              id="jobs"
+              name="jobs"
+              min="0"
+              max="10"
+              step="1"
+              class="slider"
+              value="5"
+            />
+          </div>
+          <div class="dimension">
+            <div class="label-container">
+              <img
+                src="img/Community.png"
+                alt="Community"
+                class="dimension-icon"
+              />
+              <label data-i18n-key="community_label" for="community"
+                >Social connections</label
+              >
+              <span id="communityValue" class="assignedWeight">5</span>
+            </div>
+            <input
+              type="range"
+              id="community"
+              name="community"
+              min="0"
+              max="10"
+              step="1"
+              class="slider"
+              value="5"
+            />
+          </div>
+          <div class="dimension">
+            <div class="label-container">
+              <img
+                src="img/Education.png"
+                alt="Education"
+                class="dimension-icon"
+              />
+              <label data-i18n-key="education_label" for="education"
+                >Knowledge and skills</label
+              >
+              <span id="educationValue" class="assignedWeight">5</span>
+            </div>
+            <input
+              type="range"
+              id="education"
+              name="education"
+              min="0"
+              max="10"
+              step="1"
+              class="slider"
+              value="5"
+            />
+          </div>
+          <div class="dimension">
+            <div class="label-container">
+              <img
+                src="img/Environment.png"
+                alt="Environment"
+                class="dimension-icon"
+              />
+              <label data-i18n-key="environment_label" for="environment"
+                >Environmental quality</label
+              >
+              <span id="environmentValue" class="assignedWeight">5</span>
+            </div>
+            <input
+              type="range"
+              id="environment"
+              name="environment"
+              min="0"
+              max="10"
+              step="1"
+              class="slider"
+              value="5"
+            />
+          </div>
+          <div class="dimension">
+            <div class="label-container">
+              <img
+                src="img/CivicEngagement.png"
+                alt="Civic Engagement"
+                class="dimension-icon"
+              />
+              <label data-i18n-key="civic_label" for="civic"
+                >Civic Engagement</label
+              >
+              <span id="civicValue" class="assignedWeight">5</span>
+            </div>
+            <input
+              type="range"
+              id="civic"
+              name="civic"
+              min="0"
+              max="10"
+              step="1"
+              class="slider"
+              value="5"
+            />
+          </div>
+          <div class="dimension">
+            <div class="label-container">
+              <img src="img/Health.png" alt="Health" class="dimension-icon" />
+              <label data-i18n-key="health_label" for="health">Health</label>
+              <span id="healthValue" class="assignedWeight">5</span>
+            </div>
+            <input
+              type="range"
+              id="health"
+              name="health"
+              min="0"
+              max="10"
+              step="1"
+              class="slider"
+              value="5"
+            />
+          </div>
+          <div class="dimension">
+            <div class="label-container">
+              <img
+                src="img/LifeSatisfaction.png"
+                alt="Life Satisfaction"
+                class="dimension-icon"
+              />
+              <label data-i18n-key="satisfaction_label" for="satisfaction"
+                >Subjective well-being</label
+              >
+              <span id="satisfactionValue" class="assignedWeight">5</span>
+            </div>
+            <input
+              type="range"
+              id="satisfaction"
+              name="satisfaction"
+              min="0"
+              max="10"
+              step="1"
+              class="slider"
+              value="5"
+            />
+          </div>
+          <div class="dimension">
+            <div class="label-container">
+              <img src="img/Safety.png" alt="Safety" class="dimension-icon" />
+              <label data-i18n-key="safety_label" for="safety">Safety</label>
+              <span id="safetyValue" class="assignedWeight">5</span>
+            </div>
+            <input
+              type="range"
+              id="safety"
+              name="safety"
+              min="0"
+              max="10"
+              step="1"
+              class="slider"
+              value="5"
+            />
+          </div>
+          <div class="dimension">
+            <div class="label-container">
+              <img
+                src="img/WorkLifeBalance.png"
+                alt="Work Life Balance"
+                class="dimension-icon"
+              />
+              <label data-i18n-key="balance_label" for="balance"
+                >Work-Life Balance</label
+              >
+              <span id="balanceValue" class="assignedWeight">5</span>
+            </div>
+            <input
+              type="range"
+              id="balance"
+              name="balance"
+              min="0"
+              max="10"
+              step="1"
+              class="slider"
+              value="5"
+            />
+          </div>
+        </div>
+        <div
+          id="sorting-controls"
+          style="margin-top: 20px; margin-bottom: 20px"
+        >
+          <label
+            data-i18n-key="sort_by_label"
+            for="sort-select"
+            style="margin-right: 10px"
+            >Sort countries by:
+          </label>
+          <select id="sort-select">
+            <!--<option value="default">Default (Original Order)</option>-->
+            <option data-i18n-key="sort_name_asc" value="alphabetical_asc">
+              Name (A-Z)
+            </option>
+            <option data-i18n-key="sort_name_desc" value="alphabetical_desc">
+              Name (Z-A)
+            </option>
+            <option data-i18n-key="sort_perf_asc" value="performance_asc">
+              Performance (Lowest First)
+            </option>
+            <option data-i18n-key="sort_perf_desc" value="performance_desc">
+              Performance (Highest First)
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div id="flower-container" class="box box2"></div>
+    </div>
+    <div
+      id="tooltip"
+      style="opacity: 0; position: absolute; pointer-events: none"
+    >
+      <p
+        style="
+          margin: 0 0 5px 0;
+          padding: 0 0 5px 0;
+          border-bottom: solid 0.5px;
+        "
+      >
+        <strong id="tooltip-country-name"></strong>
+      </p>
+      <div id="tooltip-barchart-container"></div>
+    </div>
+    <div id="dimension-tooltip"></div>
+    <div id="info-tooltip">
+      <video width="100%" id="bliVideo"  autoplay muted loop playsinline>
+    <source src="about_en.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <script>
+      const lang = window.location.hash === "#fr" ? "fr" : "en";
+    
+      const dimensions = [
+        "housing",
+        "income",
+        "jobs",
+        "community",
+        "education",
+        "environment",
+        "civic",
+        "health",
+        "satisfaction",
+        "safety",
+        "balance",
+      ];
+
+      const weights = {};
+
+      let sumOfUserWeights = 0;
+
+      // Initialize default weights and update display
+      dimensions.forEach((dimension) => {
+        const slider = document.getElementById(dimension);
+        const valueDisplay = document.getElementById(`${dimension}Value`);
+        weights[dimension] = slider.value;
+
+        slider.addEventListener("input", () => {
+          weights[dimension] = slider.value;
+          valueDisplay.textContent = slider.value;
+          //updateWeightsList();
+          updateVis();
+        });
+      });
+
+      /* function updateWeightsList() {
+              const list = document.getElementById("weightsList");
+              list.innerHTML = dimensions
+                .map((d) => `<li>${d.replace("-", " ")}: ${weights[d]}</li>`)
+                .join("");
+            }*/
+
+      // Initial render
+      //updateWeightsList();
+
+      // https://jsfiddle.net/NovasTaylor/f91ujcfp/
+
+      // Sample data, replace with actual data
+      const dimensionsNum = 11;
+
+      // weight
+      var weight = [
+        { dim: "housing", value: 1, cumul: 1 },
+        { dim: "income", value: 1, cumul: 2 },
+        { dim: "jobs", value: 1, cumul: 3 },
+        { dim: "community", value: 1, cumul: 4 },
+        { dim: "education", value: 1, cumul: 5 },
+        { dim: "environment", value: 1, cumul: 6 },
+        { dim: "civic", value: 1, cumul: 7 },
+        { dim: "health", value: 1, cumul: 8 },
+        { dim: "satisfaction", value: 1, cumul: 9 },
+        { dim: "safety", value: 1, cumul: 10 },
+        { dim: "balance", value: 1, cumul: 11 },
+      ];
+
+      // var totalWeight = 11;
+
+      var weightPetal = 1;
+      var totalWeight = 11;
+
+      function applyTranslations(t) {
+        document.querySelectorAll("[data-i18n-key]").forEach((element) => {
+          const key = element.getAttribute("data-i18n-key");
+          if (t[key]) {
+            element.textContent = t[key];
+          }
+        });
+      }
+      function createEnToFrLookupMap(translationData) {
+  const lookupMap = new Map();
+  if (translationData) {
+    translationData.forEach(row => {
+      // For each row, set the English text as the key and the French text as the value.
+      lookupMap.set(row.en, row.fr);
+    });
+  }
+  return lookupMap;
+}
+function translateEnToFr(englishString, enToFrMap) {
+  // Use the map to find the French equivalent.
+  // If the key (English string) exists, return its value (French string).
+  // Otherwise, return the original English string as a fallback.
+  return enToFrMap.get(englishString) || englishString;
+}
+      const t = {};
+
+      let enToFrMap = {};
+      d3.tsv("translation.tsv").then(function (translationData) {
+        translationData.forEach((d) => {
+          t[d.key] = d[lang]; // Store the text for the detected language
+        });
+
+        // --- 3b. Apply Static Translations to the Page ---
+        applyTranslations(t);
+        enToFrMap = createEnToFrLookupMap(translationData)
+
+      });
+;
+      let scores = [];
+      d3.tsv("data.tsv").then(function (loadedData) {
+        // 1. Process the loaded TSV data
+        scores = loadedData.map((row) => {
+          const countryData = {
+            country: row.country, // Assuming a 'country' column in your TSV
+            data: dimensions.map((dimName) => ({
+              dim: dimName,
+              value: +row[dimName], // Convert score to number, ensure TSV headers match dimName
+            })),
+          };
+          return countryData;
+        });
+
+        if (!scores || scores.length === 0) {
+          console.error(
+            "No data loaded or data is empty. Check data.tsv path and format."
+          );
+          // Display a message to the user in the flower-container
+          document.getElementById("flower-container").innerHTML =
+            "<p style='color:red; text-align:center;'>Error: Could not load or process visualization data. Please ensure 'data.tsv' is present and correctly formatted.</p>";
+          return;
+        }
+        initialize();
+      });
+
+      // Set up SVG container
+      const svgWidth =  document.getElementById("flower-container").offsetWidth; //getWidth(); //
+      const svgHeight = 800//getHeight();
+      //const marginText = 125;
+      const marginBottom = 25;
+      const margin = 50;
+      const svg = d3
+        .select("#flower-container")
+        .append("svg")
+        .attr("width", svgWidth)
+        .attr("height", svgHeight - 2 * margin);
+
+      //Container for the gradients
+      var defs = svg.append("defs");
+
+      //Filter for the outside glow
+      var filter = defs.append("filter").attr("id", "glow");
+      filter
+        .append("feGaussianBlur")
+        .attr("stdDeviation", "8")
+        .attr("result", "coloredBlur");
+      var feMerge = filter.append("feMerge");
+      feMerge.append("feMergeNode").attr("in", "coloredBlur");
+      feMerge.append("feMergeNode").attr("in", "SourceGraphic");
+
+      //initialize  all variables;
+      let radiusScale;
+      let petalWeightScale;
+      let opacityScale;
+      let colorScale;
+      let pie;
+      let angleScale;
+      let flowerHeight;
+      let flowers;
+
+      function initialize() {
+        // Define scale for petal
+        radiusScale = d3
+          .scaleLinear()
+          .domain([0, 10])
+          .range([0, svgWidth / (0.75 * scores.length)]);
+
+        //  Define scale for petal width
+        petalWeightScale = d3.scaleLinear().domain([0, 10]).range([3, 10]);
+
+        // Define scale for opacity
+        opacityScale = d3
+          .scaleLinear()
+          .domain([0, 0.06, 0.09, 1])
+          .range([0.25, 0.3, 0.75, 1]);
+
+        // Define color scale
+        colorScale = d3
+          .scaleOrdinal()
+          .domain([
+            "housing",
+            "income",
+            "jobs",
+            "community",
+            "education",
+            "environment",
+            "civic",
+            "health",
+            "satisfaction",
+            "safety",
+            "balance",
+          ])
+          .range([
+            "#33a594",
+            "#197ebf",
+            "#1ea2e2",
+            "#db4c60",
+            "#7fad3e",
+            "#21a554",
+            "#deaa00",
+            "#7e3874",
+            "#e5632f",
+            "#606060",
+            "#992825",
+          ]);
+
+        // Prepare data for flowers
+        pie = d3
+          .pie()
+          .sort(null)
+          .value(function (d) {
+            return d.value;
+          });
+
+        // Define x position for flower
+        angleScale = d3
+          .scaleBand()
+          .domain(scores.map((d) => d.country))
+          .range([0 + margin, svgWidth - margin])
+          .padding(0.1);
+
+        // Define height for flower
+        flowerHeight = d3
+          .scaleLinear()
+          .domain([0, 10])
+          .range([svgHeight - marginBottom, 0]);
+
+        // --- Create Y-Axis Group Element (ONCE) ---
+        yAxisGroup = svg
+          .append("g")
+          .attr("class", "y-axis")
+          .attr("transform", `translate(${margin / 2}, 0)`); // Position at the left margin
+
+        // Dynamic scale implementation
+        updateDynamicFlowerHeightDomain(); // Set initial dynamic domain
+        drawOrUpdateYAxis(0); // Draw the Y-axis for the first time (no transition)
+
+        // Create flowers
+        flowers = svg
+          .selectAll(".flower")
+          .data(scores)
+          .enter()
+          .append("g")
+          .attr("class", "flower")
+          .attr("id", (d) => d.country + "Flower")
+          .attr("transform", function (d) {
+            return `translate(${angleScale(
+              d.country
+            )}, ${flowerHeight(calculateMean(d.data))})`;
+          });
+        //add  background circle for mouseover
+        flowers
+          .append("circle")
+          .attr("class", "shadow")
+          .attr("id", (d) => d.country + "FlowerShadow")
+          .attr("cx", "0")
+          .attr("cy", "0")
+          .attr("r", svgWidth / scores.length / 3)
+          .attr("fill", "rgba(255,255,255,0.1)")
+          .style("filter", "url(#glow)");
+        //.style("opacity", 1);
+
+        // add flower stem
+        flowers
+          .append("line")
+          .attr("class", "stem")
+          .attr("x1", 0)
+          .attr("x2", 0)
+          .attr("y1", 0)
+          .attr("y2", function (d) {
+            return flowerHeight(calculateMean(d.data)) + marginBottom;
+          })
+          .attr("stroke-width", "0.25px")
+          .attr("stroke", "#46AEA7");
+
+        // add flowers petals
+        flowers
+          .selectAll(".petal")
+          .data((d, i) => pie(scores[i].data))
+          .enter()
+          .append("path")
+          .attr("class", "petal")
+          .attr("transform", function (d, i) {
+            return r(
+              (weight[i].cumul * 2 * Math.PI) / weight[dimensionsNum - 1].cumul
+            );
+          })
+          // .attr("d", petalPath)
+          .style("stroke", petalStroke)
+          .style("fill", petalFill);
+
+        // add country name to flower
+        flowers
+          .append("text")
+          .attr("class", "countryName")
+          .attr("x", 0)
+          .attr("y", 0)
+          .attr("text-anchor", "end")
+          .attr("transform", (d, i) => {
+            return (
+              "translate( " +
+              3 +
+              " , " +
+              svgWidth / (0.75 * scores.length) +
+              5 +
+              ")," +
+              "rotate(-90)"
+            );
+          })
+          .text(function (d) {
+            if(lang=="en")
+           
+            return d.country;
+          else
+          return((translateEnToFr(d.country,enToFrMap)));
+          });
+
+        flowers.on("mouseover", function () {
+          d3.selectAll(".flower").transition()
+          .duration(150).style("opacity", 0.25);
+          d3.select(this).transition()
+          .duration(150).style("opacity", 1);
+        });
+        flowers.on("mouseout", function () {
+          d3.selectAll(".flower").transition()
+          .duration(150).style("opacity", 1);
+          d3.select(this).transition()
+          .duration(150).style("opacity", 1);
+        });
+        updateVis();
+
+        const tooltipDiv = d3.select("#tooltip");
+        const tooltipCountryName = d3.select("#tooltip-country-name");
+        const tooltipBarChartContainer = d3.select(
+          "#tooltip-barchart-container"
+        );
+
+        // Tooltip Bar Chart Dimensions
+        const tipMargin = { top: 25, right: 15, bottom: 15, left: 150 };
+        const tipWidth = 225 - tipMargin.left - tipMargin.right; // Adjust 200 if tooltip min-width changes
+        const tipHeight = 250 - tipMargin.top - tipMargin.bottom;
+
+        // Append SVG for the tooltip bar chart (only once)
+        const tipSvg = tooltipBarChartContainer
+          .append("svg")
+          .attr("width", tipWidth + tipMargin.left + tipMargin.right)
+          .attr("height", tipHeight + tipMargin.top + tipMargin.bottom)
+          .append("g")
+          .attr("transform", `translate(${tipMargin.left},${tipMargin.top})`);
+
+        // X Scale for tooltip bar chart (uses global 'dimensions' array)
+        const tipYScale = d3
+          .scaleBand()
+          .domain(dimensions)
+          .range([0, tipHeight])
+          .padding(0.25); // Inverted for SVG y-coordinate
+
+        // Y Scale for tooltip bar chart (scores 0-10)
+        const tipXScale = d3
+          .scaleLinear()
+          .domain([0, 10]) // Assuming scores are always 0-10 for dimensions
+          .range([0, tipWidth]);
+
+        // Add Y Axis to tooltip SVG
+        tipSvg
+          .append("g")
+          .attr("class", "axis tooltip-y-axis")
+          .attr("transform", `translate(0,0})`)
+          .call(d3.axisLeft(tipYScale))
+          .selectAll("text")
+          .attr("class", "tooltip-y-axis-label")
+          .attr("y", 0)
+          .attr("x", -5)
+          .attr("dy", ".35em")
+          //.attr("transform", "rotate(-60)")
+          .style("text-anchor", "end")
+          .style("font-size", "10px")
+          .text(function (d) {
+
+            if(lang=="en"){
+              if (d == "housing") return "Housing";
+            if (d == "income") return "Income and wealth";
+            if (d == "jobs") return "Work and job quality";
+            if (d == "community") return "Social connections";
+            if (d == "education") return "Knowledge and skills";
+            if (d == "environment") return "Environmental quality";
+            if (d == "civic") return "Civic engagement";
+            if (d == "health") return "Health";
+            if (d == "satisfaction") return "Subjective well-being";
+            if (d == "safety") return "Safety";
+            if (d == "balance") return "Work-life balance";
+            }
+           
+          else{
+
+            if (d == "housing") return translateEnToFr("Housing",enToFrMap);
+            if (d == "income") return translateEnToFr("Income and wealth",enToFrMap);
+            if (d == "jobs") return translateEnToFr("Work and job quality",enToFrMap);
+            if (d == "community") return translateEnToFr("Social connections",enToFrMap);
+            if (d == "education") return translateEnToFr("Knowledge and skills",enToFrMap);
+            if (d == "environment") return translateEnToFr("Environmental quality",enToFrMap);
+            if (d == "civic") return translateEnToFr("Civic engagement",enToFrMap);
+            if (d == "health") return translateEnToFr("Health",enToFrMap);
+            if (d == "satisfaction") return translateEnToFr("Subjective well-being",enToFrMap);
+            if (d == "safety") return translateEnToFr("Safety",enToFrMap);
+            if (d == "balance") return translateEnToFr("Work-life balance",enToFrMap);
+          }
+   
+          }); // assign proper name
+
+        // Add Y Axis to tooltip SVG
+        tipSvg
+          .append("g")
+          .attr("class", "axis tooltip-x-axis")
+          .call(d3.axisTop(tipXScale).ticks(5).tickFormat(d3.format(".0f")));
+
+        // Attach Event Listeners to Flowers
+        // 'flowers' is your D3 selection of all <g class="flower"> elements.
+        // Ensure this 'flowers' variable is the one created by .enter().append("g")
+        if (flowers && typeof flowers.on === "function") {
+          flowers
+            .on("mouseover.tooltip", function (d) {
+              // For D3 v5, 'd' is the datum. d3.event for mouse coords.
+              tooltipDiv.transition()
+              .duration(150).style("opacity", 0.95);
+              if (lang=="en")
+               tooltipCountryName.text(d.country);
+              else
+              tooltipCountryName.text(translateEnToFr(d.country,enToFrMap));
+
+              const bars = tipSvg
+                .selectAll(".tooltip-bar")
+                .data(d.data, (dataPoint) => dataPoint.dim);
+
+              bars
+                .enter()
+                .append("rect")
+                .attr("class", "tooltip-bar")
+                .attr("y", (dataPoint) => tipYScale(dataPoint.dim))
+                .attr("width", 0) // Start with no height for animation
+                .attr("x", 0) // Start from bottom for animation
+                .attr("height", tipYScale.bandwidth())
+                .style("fill", (dataPoint) => colorScale(dataPoint.dim)) // Uses global colorScale
+                .merge(bars)
+                .transition()
+                .duration(200)
+                .attr("y", (dataPoint) => tipYScale(dataPoint.dim))
+                .attr("height", tipYScale.bandwidth())
+                .attr("x", 0)
+                .attr("width", (dataPoint) => tipXScale(dataPoint.value))
+                .style("fill", (dataPoint) => colorScale(dataPoint.dim));
+
+              bars
+                .exit()
+                .transition()
+                .duration(100)
+                .attr("y", tipHeight)
+                .attr("height", 0)
+                .remove();
+            })
+            .on("mousemove.tooltip", function () {
+              const event = d3.event; // Get the current event
+
+              // Get tooltip dimensions. It's important to do this after it's visible and content is set.
+              const tooltipNode = tooltipDiv.node();
+              const tooltipWidth = tooltipNode.offsetWidth;
+              const tooltipHeight = tooltipNode.offsetHeight;
+
+              // Get window dimensions
+              const viewportWidth = window.innerWidth;
+              const viewportHeight = window.innerHeight;
+              const scrollX = window.scrollX || window.pageXOffset; // For pages wider than viewport
+              const scrollY = window.scrollY || window.pageYOffset; // For pages taller than viewport
+
+              // Define preferred offsets from the cursor
+              let offsetX = 15;
+              let offsetY = -30; // Typically above and to the right
+
+              // Calculate initial proposed position
+              let xPosition = event.pageX + offsetX;
+              let yPosition = event.pageY + offsetY;
+
+              // --- Boundary checks and adjustments ---
+              const safetyMargin = 10; // Small margin from window edges
+
+              // Check right boundary
+              if (
+                xPosition + tooltipWidth + safetyMargin >
+                viewportWidth + scrollX
+              ) {
+                xPosition = event.pageX - tooltipWidth - offsetX; // Flip to the left of cursor
+              }
+              // Check left boundary (after potential flip or if initially too far left)
+              if (xPosition < scrollX + safetyMargin) {
+                xPosition = scrollX + safetyMargin;
+              }
+
+              // Check bottom boundary
+              if (
+                yPosition + tooltipHeight + safetyMargin >
+                viewportHeight + scrollY
+              ) {
+                yPosition = event.pageY - tooltipHeight - Math.abs(offsetY); // Flip above cursor (use absolute offsetY)
+                // If Math.abs(offsetY) was 0 or too small to clear cursor, add a bit more
+                if (offsetY >= 0) yPosition -= 15; // Add extra space if it was meant to be below cursor
+              }
+              // Check top boundary (after potential flip or if initially too high)
+              if (yPosition < scrollY + safetyMargin) {
+                yPosition = scrollY + safetyMargin;
+              }
+
+              tooltipDiv
+                .style("left", xPosition + "px")
+                .style("top", yPosition + "px");
+            })
+            .on("mouseout.tooltip", function () {
+              tooltipDiv.transition()
+              .duration(150).style("opacity", 0);
+            });
+
+          // If your existing mouseover/mouseout for flower opacity needs to coexist:
+          // You might need to combine them or ensure they don't conflict.
+          // The .tooltip namespace helps to separate these event handlers.
+          // Your existing opacity change:
+          // flowers.on("mouseover", function () {
+          //   d3.selectAll(".flower").transition().duration(200).style("opacity", 0.25);
+          //   d3.select(this).transition().duration(200).style("opacity", 1);
+          // });
+          // flowers.on("mouseout", function () {
+          //   d3.selectAll(".flower").transition().duration(200).style("opacity", 1);
+          // });
+          // These can remain as they are, or you can integrate the opacity logic into the .tooltip handlers
+          // if you want more complex interactions (e.g., only dim others if tooltip is active).
+          // For now, having them separate with namespaces should be fine.
+        } else {
+          console.error(
+            "Tooltip Error: 'flowers' selection not found or not a D3 selection."
+          );
+        }
+        // ---> END: TOOLTIP JAVASCRIPT CODE <---
+      }
+
+      d3.tsv("info.tsv").then(function setupDimensionTooltips(
+        dimensionInfoMap
+      ) {
+        const tooltip = d3.select("#dimension-tooltip");
+        // Target the container for the icon and label, as hovering either should trigger the tooltip
+        const triggerContainers = d3.selectAll(".label-container");
+
+        if (tooltip.empty() || triggerContainers.empty()) {
+          console.warn(
+            "Tooltip setup failed: Tooltip container or trigger elements not found."
+          );
+          return;
+        }
+
+        triggerContainers
+          .on("mouseover", function () {
+            // Find the <label> inside the hovered container to get the dimension 'id'
+            const label = this.querySelector("label");
+            if (!label) return;
+
+            const dimensionId = label.getAttribute("for");
+
+            let definition;
+            dimensionInfoMap.forEach(function (d) {
+              if (dimensionId == d.indic_label) {
+                if(lang=="en")
+                definition = "<b>" + d.indic_name + "</b><br/>" + d.description;
+              else
+              definition = "<b>" + translateEnToFr(d.indic_name ,enToFrMap)+ "</b><br/>" +translateEnToFr(d.description ,enToFrMap);
+              }
+            });
+
+            if (definition) {
+              tooltip.html(definition); // Set the tooltip's text
+              tooltip.style("opacity", 1); // Make it visible
+            }
+          })
+          .on("mousemove", function () {
+            // This logic keeps the tooltip within the browser window boundaries
+            const event = d3.event; // (This is for D3 v5, as used in your project)
+            const tooltipNode = tooltip.node();
+            const tooltipWidth = tooltipNode.offsetWidth;
+            const tooltipHeight = tooltipNode.offsetHeight;
+            const safetyMargin = 15;
+
+            // Start by positioning below and to the right of the cursor
+            let xPosition = event.pageX + safetyMargin;
+            let yPosition = event.pageY + safetyMargin;
+
+            // Adjust if it overflows the window
+            if (xPosition + tooltipWidth > window.innerWidth) {
+              xPosition = event.pageX - tooltipWidth - safetyMargin; // Flip to left of cursor
+            }
+            if (yPosition + tooltipHeight > window.innerHeight) {
+              yPosition = event.pageY - tooltipHeight - safetyMargin; // Flip above cursor
+            }
+
+            tooltip
+              .style("left", xPosition + "px")
+              .style("top", yPosition + "px");
+          })
+          .on("mouseout", function () {
+            tooltip.style("opacity", 0); // Hide the tooltip
+          });
+      });
+
+      const infoTooltip = d3.select("#info-tooltip");
+      d3.select("#infoVideo")
+        .on("mouseover", function () {
+          if(lang=="en"){
+            let video = document.getElementById('bliVideo');
+
+// Pause the video before updating
+video.pause();
+
+// Update the <source> element's src
+let source = video.querySelector('source');
+source.src = "about_en.mp4";
+
+// Reload the video with the new source
+video.load();
+
+// Resume playback if autoplay is desired
+video.play();
+          }
+        else{
+          let video = document.getElementById('bliVideo');
+
+// Pause the video before updating
+video.pause();
+
+// Update the <source> element's src
+let source = video.querySelector('source');
+source.src = "about_fr.mp4";
+
+// Reload the video with the new source
+video.load();
+
+// Resume playback if autoplay is desired
+video.play();
+        }
+          // Set the tooltip's text
+          infoTooltip.style("opacity", 1); // Make it visible
+        })
+        .on("mousemove", function () {
+          // This logic keeps the tooltip within the browser window boundaries
+          const event = d3.event; // (This is for D3 v5, as used in your project)
+          const tooltipNode = infoTooltip.node();
+          const tooltipWidth = tooltipNode.offsetWidth;
+          const tooltipHeight = tooltipNode.offsetHeight;
+          const safetyMargin = 15;
+
+          // Start by positioning below and to the right of the cursor
+          let xPosition = event.pageX + safetyMargin;
+          let yPosition = event.pageY + safetyMargin;
+
+          // Adjust if it overflows the window
+          if (xPosition + tooltipWidth > window.innerWidth) {
+            xPosition = event.pageX - tooltipWidth - safetyMargin; // Flip to left of cursor
+          }
+          if (yPosition + tooltipHeight > window.innerHeight) {
+            yPosition = event.pageY - tooltipHeight - safetyMargin; // Flip above cursor
+          }
+
+          infoTooltip
+            .style("left", xPosition + "px")
+            .style("top", yPosition + "px");
+        })
+        .on("mouseout", function () {
+          infoTooltip.style("opacity", 0); // Hide the tooltip
+        });
+    </script>
+  </body>
+</html>
