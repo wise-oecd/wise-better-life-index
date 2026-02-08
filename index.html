@@ -291,9 +291,12 @@
               Performance (Highest First)
             </option>
           </select>
+          <p><div style = "margin-bottom: 20px">
+            <span id="metadata_note" data-i18n-key="metadata_note">Learn more about the indicators used </span>&nbsp;<a id="metadata_note_click" data-i18n-key="metadata_note_click" href="https://www.oecd.org/content/dam/oecd/en/topics/policy-sub-issues/measuring-well-being-and-progress/oecd-well-being-database-definitions.pdf">here.</a>
+          </div>
+          </p>
         </div>
       </div>
-
       <div id="flower-container" class="box box2"></div>
     </div>
     <div
@@ -895,9 +898,9 @@ function translateEnToFr(englishString, enToFrMap) {
             dimensionInfoMap.forEach(function (d) {
               if (dimensionId == d.indic_label) {
                 if(lang=="en")
-                definition = "<b>" + d.indic_name + "</b><br/>" + d.description;
+                definition = "<b>" + d.indic_name + "</b><br/>" + d.description + "<br/><br/><b>Indicators used: </b>" + d.headline_indic;
               else
-              definition = "<b>" + translateEnToFr(d.indic_name ,enToFrMap)+ "</b><br/>" +translateEnToFr(d.description ,enToFrMap);
+              definition = "<b>" + translateEnToFr(d.indic_name ,enToFrMap)+ "</b><br/>" +translateEnToFr(d.description ,enToFrMap) + "<br/><br/><b>Indicateurs utilisés : </b>" + translateEnToFr(d.headline_indic, enToFrMap);
               }
             });
 
